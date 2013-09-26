@@ -5,7 +5,6 @@ var makeQueue = function(){
   var storage = {};
   var last = 0;
   var look = 0;
-  var temp;
 
   // Implement the methods below
 
@@ -16,7 +15,7 @@ var makeQueue = function(){
 
   instance.dequeue = function(){
     if (last - look) {
-      temp = storage[look];
+      var temp = storage[look];
       delete storage[look];
       look++;
       return temp;
