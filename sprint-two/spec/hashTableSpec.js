@@ -1,4 +1,4 @@
-describe("hashTable", function() {
+  describe("hashTable", function() {
   var hashTable;
 
   beforeEach(function() {

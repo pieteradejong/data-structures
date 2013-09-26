@@ -1,4 +1,4 @@
-var HashTable = function(){
+  var HashTable = function(){
   this._limit = 8;
 
   // Use a limited array to store inserted elements.
