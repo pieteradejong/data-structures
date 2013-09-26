@@ -1,32 +1,29 @@
 var makeQueue = function(){
-  // Hey! Copy your code from src/functional/queue.js and paste it here
   var instance = {};
   instance._storage = {};
-  // Use an object with numeric keys to store values
-  instance.last = 0;
-  instance.look = 0;
+  instance._last = 0;
+  instance._look = 0;
   _.extend(instance, queueMethods);
-  // Implement the methods below
   return instance;
 };
 
 var queueMethods = {
   enqueue : function(value){
-    this._storage[this.last] = value;
-    this.last++;
+    this._storage[this._last] = value;
+    this._last++;
   },
 
   dequeue : function(){
-    if (this.last - this.look) {
-      var temp = this._storage[this.look];
-      delete this._storage[this.look];
-      this.look++;
+    if (this._last - this._look) {
+      var temp = this._storage[this._look];
+      delete this._storage[this._look];
+      this._look++;
       return temp;
     }
   },
 
   size : function(){
-    return this.last - this.look;
+    return this._last - this._look;
   }
 };
 
