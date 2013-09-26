@@ -1,24 +1,25 @@
 var Queue = function() {
-  this.last = 0;
-  this.look = 0;
+  this._storage = {};
+  this._last = 0;
+  this._look = 0;
 };
 
 Queue.prototype.enqueue = function(value){
-  this[this.last] = value;
-  this.last++;
+  this._storage[this._last] = value;
+  this._last++;
 };
 
 Queue.prototype.dequeue = function(){
-  if (this.last - this.look) {
-    var temp = this[this.look];
-    delete this[this.look];
-    this.look++;
+  if (this._last - this._look) {
+    var temp = this._storage[this._look];
+    delete this._storage[this._look];
+    this._look++;
     return temp;
   }
 };
 
 Queue.prototype.size = function(){
-  return this.last - this.look;
+  return this._last - this._look;
 };
 
 var makeQueue = new Queue();
