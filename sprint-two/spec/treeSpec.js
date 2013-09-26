@@ -11,5 +11,59 @@ describe("tree", function() {
     expect('value' in tree).toBe(true);
   });
 
-  // Add more tests here to test the functionality of tree.
+  it("should contain an added value", function() {
+    tree.addChild(5);
+    expect(tree.contains(5)).toEqual(true);
+  });
+
+
+  it("should be able to create a nested tree", function() {
+    tree.addChild(5);
+    tree.addChild(10);
+    tree.addChild(15);
+    tree.children[0].addChild(3);
+    tree.children[0].addChild(33);
+    tree.children[0].children[1].addChild(100);
+
+    expect(tree.contains(100)).toEqual(true);
+    expect(tree.children[0].contains(100)).toEqual(true);
+    expect(tree.children[0].children[1].contains(100)).toEqual(true);
+    expect(tree.children[0].children[1].children[0].contains(100)).toEqual(true);
+
+    expect(tree.children[2].contains(100)).toEqual(false);
+    expect(tree.children[0].children[0].contains(100)).toEqual(false);
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
+  it("", function() {
+    expect(tree.addChild()).toEqual();
+  });
+
 });
