@@ -1,7 +1,7 @@
 var makeQueue = function(){
   // Hey! Copy your code from src/functional/queue.js and paste it here
   var instance = {};
-
+  instance._storage = {};
   // Use an object with numeric keys to store values
   instance.last = 0;
   instance.look = 0;
@@ -12,14 +12,14 @@ var makeQueue = function(){
 
 var queueMethods = {
   enqueue : function(value){
-    this[this.last] = value;
+    this._storage[this.last] = value;
     this.last++;
   },
 
   dequeue : function(){
     if (this.last - this.look) {
-      var temp = this[this.look];
-      delete this[this.look];
+      var temp = this._storage[this.look];
+      delete this._storage[this.look];
       this.look++;
       return temp;
     }
