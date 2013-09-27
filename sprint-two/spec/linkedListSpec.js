@@ -16,8 +16,9 @@ describe("linkedList", function() {
     expect(linkedList.contains).toEqual(jasmine.any(Function));
   });
 
-  it ("should return null when trying to remove the head of an empty list", function() {
+  it ("should return null when trying to remove the head or tail of an empty list", function() {
     expect(linkedList.removeHead()).toEqual(null);
+    expect(linkedList.removeTail()).toEqual(null);
   });
 
   it("should have the same head and tail after adding a tail to an empty list", function() {
@@ -25,13 +26,24 @@ describe("linkedList", function() {
     expect(linkedList.head).toEqual(linkedList.tail);
   });
 
+  it("should have the same head and tail after adding a head to an empty list", function() {
+    linkedList.addToHead(85);
+    expect(linkedList.head).toEqual(linkedList.tail);
+  });
+
   it("should contain values that exist between the head and tail", function() {
     linkedList.addToTail(10);
     linkedList.addToTail(20);
     linkedList.addToTail(30);
+    linkedList.addToHead(40);
+    linkedList.addToHead(50);
+    linkedList.addToHead(60);
     expect(linkedList.contains(10)).toEqual(true);
     expect(linkedList.contains(20)).toEqual(true);
     expect(linkedList.contains(30)).toEqual(true);
+    expect(linkedList.contains(40)).toEqual(true);
+    expect(linkedList.contains(50)).toEqual(true);
+    expect(linkedList.contains(60)).toEqual(true);
   });
 
   it("should not contain values that were not added", function() {
@@ -45,8 +57,11 @@ describe("linkedList", function() {
   it("should not contain values that were added and then removed", function() {
     linkedList.addToTail(1);
     linkedList.removeHead();
+    linkedList.addToHead(50);
+    linkedList.removeTail();
     linkedList.addToTail(1000);
     expect(linkedList.contains(1)).toEqual(false);
+    expect(linkedList.contains(50)).toEqual(false);
     expect(linkedList.contains(1000)).toEqual(true);
   });
 
