@@ -14,16 +14,22 @@
 
 HashTable.prototype.insert = function(k, v){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  console.log(i);
-  var temp = this._storage.get(i);
-  if (!temp) { temp = []; }
-  temp.push([k, v]);
-  this._storage.set(i, temp);
+  var pairs = this._storage.get(i) || [];
+  for ( var j = 0; j < pairs.length; j++ ) {
+    var pair = pairs[j];
+    if (pair[0] === i) {
+      pair[1] = v;
+      return;
+    }
+  }
+
+  pairs.push([k, v]);
+  this._storage.set(i, pairs);
 };
 
 HashTable.prototype.retrieve = function(k){
   var i = getIndexBelowMaxForKey(k, this._limit);
-  var temp = this._storage.get(i);
+  var pairs = this._storage.get(i) || [];
   for (var j = 0; j < temp.length; j++) {
     if(temp[j][0] === k) { return temp[j][1]; }
   }
