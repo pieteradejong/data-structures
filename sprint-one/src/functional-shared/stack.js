@@ -26,4 +26,3 @@ var stackMethods = {
     return this._sizeVal;
   }
 };
-
